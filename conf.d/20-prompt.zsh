@@ -1,6 +1,11 @@
 # Import colors function to use color
 autoload -U colors && colors
 
+# Import the promptinit function to load some default prompt settings
+autoload -U promptinit && promptinit
+# Load gentoo prompt for better autocompletion (but ignore failure, e.g. on OSX)
+prompt gentoo > /dev/null 2>&1
+
 DEFAULT_USER=`whoami`
 
 git_prompt() {

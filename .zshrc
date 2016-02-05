@@ -1,9 +1,15 @@
 # Get real path of this directory
-ZSHDIR="$(dirname $(realpath ${(%):-%N}))"
+ZSHDIR="$(dirname $(readlink ${(%):-%N}))"
 
-autoload -U  compinit  promptinit
+autoload -U compinit
 compinit
-promptinit; prompt gentoo
+
+# Check whether we are running on an OSX system and set IS_OSX variable
+if [[ "$(uname)" == "Darwin" ]]; then
+	IS_OSX=1
+else
+	IS_OSX=0
+fi
 
 # Include all modules from modules.d directory (this is also only a config
 # but meant to only contain functions)
