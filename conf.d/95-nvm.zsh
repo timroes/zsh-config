@@ -1,6 +1,6 @@
 check_node_version() {
 	# When a .node-version file in the current directory exists ..
-	if [ -f ".node-version" ]; then
+	if [[ "$IGNORE_NODE_VERSION" != "1" && -f ".node-version" ]]; then
 		nodeVersion=`cat .node-version`
 		# .. check whether the current node version is the required one
 		if [ `node -v` != "v$nodeVersion" ]; then
