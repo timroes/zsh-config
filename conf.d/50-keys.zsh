@@ -10,3 +10,6 @@ key[Delete]=${terminfo[kdch1]}
 [[ -n "${key[End]}"     ]]  && bindkey  "${key[End]}"     end-of-line
 [[ -n "${key[Delete]}"  ]]  && bindkey  "${key[Delete]}"  delete-char
 [[ -n "${key[Insert]}"  ]]  && bindkey  "${key[Insert]}"  overwrite-mode
+
+bindkey ";5C" forward-word
+bindkey ";5D" backward-word
