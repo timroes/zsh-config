@@ -1,6 +1,14 @@
 # Add some common key bindings
 typeset -A key
 
+# Ctrl + w only delete until slash
+custom-backward-delete-word() {
+	local WORDCHARS=${WORDCHARS/\//}
+	zle backward-delete-word
+}
+zle -N custom-backward-delete-word
+bindkey '^W' custom-backward-delete-word
+
 key[Home]=${terminfo[khome]}
 key[End]=${terminfo[kend]}
 key[Insert]=${terminfo[kich1]}
