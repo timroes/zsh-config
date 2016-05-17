@@ -1,0 +1,7 @@
+#compdef pacwrap
+
+_arguments "1:Action:((\
+	update\:'Update the repository information' \
+	upgrade\:'Update all installed packages' \
+	cleanup\:'Clear all libraries, that are no longer needed' \
+))"

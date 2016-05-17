@@ -1,6 +1,9 @@
 # Get real path of this directory
 ZSHDIR="$(dirname $(readlink ${(%):-%N}))"
 
+# Add completion directory for auto completion
+fpath=($ZSHDIR/completion $fpath)
+
 autoload -U compinit
 compinit
 
