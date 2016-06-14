@@ -11,7 +11,12 @@ if [ $? -eq 0 ]; then
 				;;
 			upgrade)
 				shift
-				command sudo pacman -Syu $@
+				type pacaur > /dev/null 2>&1
+				if [ $? -eq 0 ]; then
+					command pacaur -Syu
+				else
+					command sudo pacman -Syu
+				fi
 				;;
 			cleanup)
 				shift
