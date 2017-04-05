@@ -18,12 +18,15 @@ check_node_version() {
 
 if [ -d "$HOME/.nvm" ]; then
 	export NVM_DIR="$HOME/.nvm"
-	[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+	[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" --no-use
 
 	# Check whether nvm is installed successfully
 	type nvm > /dev/null 2>&1
 	if [ $? -eq 0 ]; then
 		# If nvm was installed successfully setup the check for a .node-version file
 		add-zsh-hook precmd check_node_version
+
+		alias node='unalias node ; unalias npm ; nvm use default ; node $@'
+		alias npm='unalias node ; unalias npm ; nvm use default ; npm $@'
 	fi
 fi
