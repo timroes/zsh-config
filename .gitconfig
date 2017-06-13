@@ -1,0 +1,5 @@
+[user]
+	name = Tim Roes
+	email = mail@timroes.de
+[alias]
+	lastdiff = diff HEAD^ HEAD

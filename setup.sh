@@ -1,6 +1,6 @@
 #! /bin/bash
 
-FILES=(.zshenv .zprofile .zshrc .zlogin .zlogout)
+FILES=(.zshenv .zprofile .zshrc .zlogin .zlogout .gitconfig)
 
 pushd `dirname $0` > /dev/null
 SCRIPTPATH=`pwd -P`
@@ -14,4 +14,3 @@ fi
 for config in ${FILES[@]}; do
 	ln -sf "$SCRIPTPATH/$config" "$HOME"
 done
-
