@@ -6,3 +6,6 @@ zstyle ':completion::complete:*' use-cache 1
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 # Automatically autocomplete to first menu entry on tab
 setopt MENU_COMPLETE
+
+# Enable autocompletion of directories and auto change without a command
+setopt autocd
