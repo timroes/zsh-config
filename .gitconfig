@@ -2,4 +2,8 @@
 	name = Tim Roes
 	email = mail@timroes.de
 [alias]
+	b = checkout -b
 	lastdiff = diff HEAD^ HEAD
+	master = checkout master
+	pn = "!git push -u origin \"$(git rev-parse --abbrev-ref HEAD)\""
+	upstream = "!git remote update upstream && git reset --hard upstream/\"$(git rev-parse --abbrev-ref HEAD)\""
