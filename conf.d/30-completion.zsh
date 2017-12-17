@@ -9,3 +9,13 @@ setopt MENU_COMPLETE
 
 # Enable autocompletion of directories and auto change without a command
 setopt autocd
+
+
+include_autosuggest=/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+if [[ -a "$include_autosuggest" ]]; then
+	ZSH_AUTOSUGGEST_USE_ASYNC=true
+	source $include_autosuggest
+else
+	echo "You might want to install zsh-autosuggestions from AUR for proper autocompletion."
+fi
