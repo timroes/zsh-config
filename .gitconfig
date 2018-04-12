@@ -3,9 +3,12 @@
 	email = mail@timroes.de
 [alias]
 	b = checkout -b
-	lastdiff = diff HEAD^ HEAD
+	m = checkout master
 	master = checkout master
+	lastdiff = diff HEAD^ HEAD
 	pn = "!git push -u origin \"$(git rev-parse --abbrev-ref HEAD)\""
 	upstream = "!git remote update upstream && git reset --hard upstream/\"$(git rev-parse --abbrev-ref HEAD)\""
 	tree = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
 	treef = log --all --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
+	pr  = "!f() { git fetch -fu ${2:-upstream} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
+	cleanup-prs = "!git for-each-ref refs/heads/pr/* --format='%(refname)' | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
