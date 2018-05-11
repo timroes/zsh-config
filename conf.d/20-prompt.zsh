@@ -3,8 +3,6 @@ autoload -U colors && colors
 
 # Import the promptinit function to load some default prompt settings
 autoload -U promptinit && promptinit
-# Load gentoo prompt for better autocompletion (but ignore failure, e.g. on OSX)
-prompt gentoo > /dev/null 2>&1
 
 DEFAULT_USER=`whoami`
 
@@ -27,7 +25,7 @@ user_or_empty() {
 }
 
 prompt_precmd() {
-	PROMPT="%{$fg_bold[cyan]%}$(user_or_empty)%m%{$reset_color%} %3~ %(!.#.>) "
+	PROMPT="%{$fg_bold[cyan]%}$(user_or_empty)%3~%{$reset_color%} %(!.#.>) "
 	# Build right prompt with git info
 	RPROMPT="$(git_prompt)"
 }
