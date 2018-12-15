@@ -5,19 +5,6 @@ if [ $? -eq 0 ]; then
 
 	pacwrap() {
 		case "$1" in
-			update)
-				shift
-				command sudo pacman -Syy $@
-				;;
-			upgrade)
-				shift
-				type pacaur > /dev/null 2>&1
-				if [ $? -eq 0 ]; then
-					command pacaur -Syu
-				else
-					command sudo pacman -Syu
-				fi
-				;;
 			cleanup)
 				shift
 				orphans=$(pacman -Qqtd)
