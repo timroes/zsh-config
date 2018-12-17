@@ -25,9 +25,7 @@ user_or_empty() {
 }
 
 prompt_precmd() {
-	PROMPT="%{$fg_bold[cyan]%}$(user_or_empty)%3~%{$reset_color%} %(!.#.>) "
-	# Build right prompt with git info
-	RPROMPT="$(git_prompt)"
+	PROMPT="%{$fg_bold[cyan]%}$(user_or_empty)%3~%{$reset_color%} $(git_prompt)%(!.#.>) "
 }
 
 # Register the prompt_precmd method to execute before each prompt showing
