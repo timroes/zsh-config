@@ -1,16 +1,16 @@
 check_node_version() {
 	# When a .nvmrc file in the current directory exists ..
 	if [[ "$IGNORE_NODE_VERSION" != "1" && -f ".nvmrc" ]]; then
-		nodeVersion=`cat .nvmrc`
+		nvmrc=`cat .nvmrc`
 		# .. check whether the current node version is the required one
-		if [ `node -v` != "v$nodeVersion" ]; then
+		if [ `node -v` != `nvm version $nvmrc` ]; then
 			# If not use nvm to set the version to the one from .node-version
-			echo -e "$fg_bold[yellow]Found .nvmrc file!$reset_color Switching to node v$nodeVersion ..."
+			echo -e "$fg_bold[yellow][.nvmrc] Switching to $nvmrc$reset_color"
 			nvm ls $nodeVersion &> /dev/null
 			if [ $? -eq 0 ]; then
-				nvm use $nodeVersion
+				nvm use $nvmrc
 			else
-				nvm install $nodeVersion
+				nvm install $nvmrc
 			fi
 			if [ $? -eq 0 ]; then
 				echo -e "$fg_bold[green]Done!$reset_color"
